@@ -57,12 +57,8 @@ public class Translator {
                          stringBuilder.append(" ");
                     }
 
-                    String t = dictionary.get(word.toLowerCase());
-                    if (t == null) {
-                         stringBuilder.append(word);
-                    } else {
-                        stringBuilder.append(t);
-                    }
+                    String t = dictionary.getOrDefault(word.toLowerCase(), word);
+                    stringBuilder.append(t);
 
                     addSpace = true;
                 }
