@@ -1,0 +1,3 @@
+car:samochód
+cat:kot
+dog:pies
