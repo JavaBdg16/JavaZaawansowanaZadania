@@ -43,21 +43,35 @@ public class StackTests {
             String element = "an element";
 
             @BeforeEach
-            public void pushAnElement() throws StackMaxSizeException, StackDuplicateElementException {
-                stack.add(element);
+            public void pushAnElement() {
+                try {
+                    stack.add(element);
+                } catch (StackMaxSizeException e) {
+                    fail(e.getMessage());
+                } catch (StackDuplicateElementException e) {
+                    fail(e.getMessage());
+                }
             }
 
             @Test
             @DisplayName("should return element when popped")
-            public void shouldReturnElementWhenPopped() throws EmptyStackException {
-                assertEquals(element, stack.pop());
+            public void shouldReturnElementWhenPopped() {
+                try {
+                    assertEquals(element, stack.pop());
+                } catch (EmptyStackException e) {
+                    fail(e.getMessage());
+                }
                 assertTrue(stack.isEmpty());
             }
 
             @Test
             @DisplayName("should return element when peeked")
-            public void shouldReturnElementWhenPeeked() throws EmptyStackException {
-                assertEquals(element, stack.peek());
+            public void shouldReturnElementWhenPeeked() {
+                try {
+                    assertEquals(element, stack.peek());
+                } catch (EmptyStackException e) {
+                    fail(e.getMessage());
+                }
                 assertFalse(stack.isEmpty());
             }
         }
