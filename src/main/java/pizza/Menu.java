@@ -30,9 +30,9 @@ public class Menu {
         Pizza pizza = null;
 
         if ("Margherita".equals(rodzaj)) {
-            pizza = new Margherita();
+            pizza = margherita;
         } else if ("Funghi".equals(rodzaj)) {
-            pizza = new Funghi();
+            pizza = funghi;
         }
         // TODO
 
