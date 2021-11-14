@@ -64,7 +64,8 @@ public class StorageStateService {
     }
 
     public Map<Long, Product> searchProduct(String searchText) {
-        SearchProductsThread thread = new SearchProductsThread(products, searchText);
+        SearchProductsThread runnable = new SearchProductsThread(products, searchText);
+        Thread thread = new Thread(runnable);
         System.out.print("Rozpoczynam szukanie produktów: " + searchText +  " ");
 
         thread.start();
@@ -79,7 +80,7 @@ public class StorageStateService {
         }
 
         System.out.println();
-        return thread.getResult();
+        return runnable.getResult();
     }
 
     public Map<Long, Product> getProducts() {

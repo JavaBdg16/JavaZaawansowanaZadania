@@ -3,7 +3,7 @@ package storage;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class SearchProductsThread extends Thread {
+public class SearchProductsThread implements Runnable {
 
     private final Map<Long, Product> products;
     private final String searchText;
