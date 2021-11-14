@@ -16,12 +16,12 @@ public class SortContext {
             throw new SortStrategyException();
         }
 
-        SortThread thread = new SortThread(sortStrategy, tab);
+        Thread thread = new SortThread(sortStrategy, tab);
         thread.start();
 
         System.out.print("Sortuję ");
 
-        while (!thread.isEnded()) {
+        while (thread.isAlive()) {
             System.out.print(".");
             try {
                 Thread.sleep(100);
